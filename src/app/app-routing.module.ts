@@ -4,12 +4,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    redirectTo: 'orcamento',
+    pathMatch: 'full'
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'orcamento',
     pathMatch: 'full'
+  },
+  {
+    path: 'orcamento',
+    loadChildren: () => import('./pages/orcamento/orcamento.module').then( m => m.OrcamentoPageModule)
   },
 ];
 
