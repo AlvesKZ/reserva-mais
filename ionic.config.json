@@ -1,0 +1,7 @@
+{
+  "name": "reserva-mais",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
