@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+      Confirmar orçamento
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumo da hospedagem</ion-card-title>
+      <ion-card-subtitle>Confira os detalhes do seu orçamento</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="linha-detalhe">
+        <strong>Valor da diária:</strong>
+        <span class="valor-detalhe">R$ {{valorDiaria | number:'1.2-2'}}</span>
+      </p>
+
+      <p class="linha-detalhe">
+        <strong>Quantidade de dias:</strong>
+        <span class="valor-detalhe">{{quantidadeDias}} {{quantidadeDias === 1 ? 'dia' : 'dias'}}</span>
+      </p>
+
+      <hr>
+
+      <p class="linha-detalhe valor-total">
+        <strong>Total a pagar:</strong>
+        <span class="montante-total">R$ {{valorTotal | number:'1.2-2'}}</span>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <div class="container-botoes">
+    <ion-button expand="block" fill="outline" color="medium" (click)="voltar()">
+      <ion-icon name="arrow-back" slot="start"></ion-icon>
+      Voltar
+    </ion-button>
+
+    <ion-button expand="block" size="large" color="secondary" (click)="confirmar()">
+      <ion-icon name="checkmark-done-outline" slot="start"></ion-icon>
+      Confirmar reserva
+    </ion-button>
+  </div>
+</ion-content>

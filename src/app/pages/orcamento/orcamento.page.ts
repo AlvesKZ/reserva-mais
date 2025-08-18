@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Orcamento, OrcamentoService } from 'src/app/services/orcamento';
+import { Orcamento } from 'src/app/services/orcamento';
 
 @Component({
   selector: 'app-orcamento',
@@ -17,24 +17,10 @@ export class OrcamentoPage implements OnInit {
   indiceEdicao = -1;
 
   constructor(
-    private orcamentoService: OrcamentoService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.carregarOrcamentos();
-  }
-
-  ionViewWillEnter() {
-    this.carregarOrcamentos();
-  }
-
-  async carregarOrcamentos() {
-    try {
-      this.orcamentos = await this.orcamentoService.obterOrcamentos();
-    } catch (error) {
-      console.error('Erro ao carregar orçamentos:', error);
-    }
   }
 
   obterTotal(): number {
@@ -46,7 +32,7 @@ export class OrcamentoPage implements OnInit {
       return;
     }
 
-    this.router.navigate(['/detalhes-orcamento'], {
+    this.router.navigate(['/orcamento-detalhes'], {
       queryParams: {
         valorDiaria: this.valorDiaria,
         quantidadeDias: this.quantidadeDias,

@@ -15,7 +15,19 @@ const routes: Routes = [
   {
     path: 'orcamento',
     loadChildren: () => import('./pages/orcamento/orcamento.module').then( m => m.OrcamentoPageModule)
+  },  {
+    path: 'orcamento-detalhes',
+    loadChildren: () => import('./pages/orcamento-detalhes/orcamento-detalhes.module').then( m => m.OrcamentoDetalhesPageModule)
   },
+  {
+    path: 'confirmacao',
+    loadChildren: () => import('./pages/confirmacao/confirmacao.module').then( m => m.ConfirmacaoPageModule)
+  },
+  {
+    path: 'lista-orcamentos',
+    loadChildren: () => import('./pages/lista-orcamentos/lista-orcamentos.module').then( m => m.ListaOrcamentosPageModule)
+  },
+
 ];
 
 @NgModule({

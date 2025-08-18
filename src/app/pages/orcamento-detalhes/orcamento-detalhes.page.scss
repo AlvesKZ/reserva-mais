@@ -1,0 +1,29 @@
+.container-botoes {
+  margin-top: 24px;
+}
+
+.container-botoes ion-button {
+  margin-bottom: 12px;
+}
+
+.linha-detalhe {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.valor {
+  font-weight: 500;
+}
+
+.valor-total {
+  margin-top: 12px;
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
+}
+
+.montante-total {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #103778;
+}
