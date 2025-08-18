@@ -1,0 +1,141 @@
+.recipiente {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.item-entrada {
+  margin-bottom: 20px;
+  --background: var(--ion-color-light);
+  border-radius: 12px;
+}
+
+.item-intervalo {
+  margin-bottom: 20px;
+  --background: var(--ion-color-light);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.item-resumo {
+  --background: var(--ion-color-primary-tint);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.icone-rotulo {
+  margin-right: 8px;
+  color: var(--ion-color-primary);
+}
+
+.rotulo-dias {
+  color: var(--ion-color-medium);
+  font-size: 0.9em;
+  margin-left: 4px;
+}
+
+.entrada-personalizada {
+  --color: var(--ion-color-dark);
+  --placeholder-color: var(--ion-color-medium);
+  font-size: 1.1em;
+}
+
+.intervalo-personalizado {
+  padding-top: 20px;
+}
+
+.detalhes-calculo {
+  margin-top: 12px;
+}
+
+.detalhes-calculo p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.rotulo-detalhe {
+  color: #DDD;
+  font-size: 0.9em;
+}
+
+.valor-detalhe {
+  font-weight: 500;
+  color: #000;
+}
+
+.valor-total {
+  border-top: 1px solid var(--ion-color-light-shade);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.montante-total {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #000;
+}
+
+.container-botoes {
+  margin: 24px 0;
+}
+
+.container-botoes ion-button {
+  margin-bottom: 12px;
+}
+
+.card-historico {
+  margin-top: 24px;
+  --background: var(--ion-color-secondary-tint);
+}
+
+.card-historico ion-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ion-color-secondary);
+}
+
+.card-dicas {
+  margin-top: 24px;
+  --background: var(--ion-color-light-tint);
+}
+
+.card-dicas ion-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ion-color-primary);
+}
+
+.card-dicas ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.card-dicas ion-label {
+  font-size: 0.9em;
+  color: var(--ion-color-dark);
+}
+
+@media (max-width: 768px) {
+  .recipiente {
+    padding: 0 8px;
+  }
+}
+
+ion-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+ion-button {
+  transition: all 0.2s ease-in-out;
+}
+
+ion-button:not([disabled]):hover {
+  transform: translateY(-2px);
+}
+
+ion-button[disabled] {
+  opacity: 0.6;
+}

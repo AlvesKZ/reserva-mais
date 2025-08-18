@@ -1,19 +1,96 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Calculo de orçamento</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-icon name="calculator-outline" slot="start"></ion-icon>
+      Cálculo de Orçamento
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item-group>
-    <ion-item>
-      <label for="valor">Defina o valor da diária:</label>
-      <ion-input name="valor" min="1"></ion-input>
-    </ion-item>
-    <ion-item>
-      <label for="dias">Defina a quantidade de dias que dejesa se hospedar:</label>
-      <ion-range min="1" max="30"></ion-range>
-    </ion-item>
-    <ion-button>Continuar</ion-button>
-  </ion-item-group>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="recipiente">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Configure sua hospedagem</ion-card-title>
+        <ion-card-subtitle>Calcule o valor total da sua estadia</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form #formularioOrcamento="ngForm">
+          <ion-item lines="none" class="item-entrada">
+            <ion-label position="stacked">
+              <ion-icon name="cash-outline" class="icone-rotulo"></ion-icon>
+              Valor da diária (R$)
+            </ion-label>
+            <ion-input type="number" placeholder="Ex: 150,00" min="1" step="0.01" [(ngModel)]="valorDiaria"
+              name="valorDiaria" required class="entrada-personalizada">
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="item-intervalo">
+            <ion-label position="stacked">
+              <ion-icon name="calendar-outline" class="icone-rotulo"></ion-icon>
+              Quantidade de dias: {{quantidadeDias}}
+              <span class="rotulo-dias">{{quantidadeDias === 1 ? 'dia' : 'dias'}}</span>
+            </ion-label>
+            <ion-range min="1" max="30" pin="true" snaps="true" color="primary" [(ngModel)]="quantidadeDias"
+              name="quantidadeDias" class="intervalo-personalizado">
+              <ion-label slot="start">1</ion-label>
+              <ion-label slot="end">30</ion-label>
+            </ion-range>
+          </ion-item>
+
+          <ion-item lines="none" class="item-resumo" *ngIf="valorDiaria && valorDiaria > 0">
+            <ion-label>
+              <h3>Preview do orçamento</h3>
+              <div class="detalhes-calculo">
+                <p>
+                  <span class="rotulo-detalhe">Valor por dia:</span>
+                  <span class="valor-detalhe">R$ {{valorDiaria | number:'1.2-2'}}</span>
+                </p>
+                <p>
+                  <span class="rotulo-detalhe">Quantidade de dias:</span>
+                  <span class="valor-detalhe">{{quantidadeDias}} {{quantidadeDias === 1 ? 'dia' : 'dias'}}</span>
+                </p>
+                <hr>
+                <p class="valor-total">
+                  <span class="rotulo-detalhe">Total:</span>
+                  <span class="montante-total">R$ {{obterTotal() | number:'1.2-2'}}</span>
+                </p>
+              </div>
+            </ion-label>
+          </ion-item>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="container-botoes">
+      <ion-button expand="block" size="large" color="primary" [disabled]="!valorDiaria || valorDiaria <= 0"
+        (click)="calcularOrcamento()">
+        <ion-icon name="calculator" slot="start"></ion-icon>
+        Continuar e Calcular Orçamento
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" color="medium" (click)="limparFormulario()">
+        <ion-icon name="refresh" slot="start"></ion-icon>
+        Limpar Campos
+      </ion-button>
+    </div>
+
+    <ion-card *ngIf="orcamentos.length > 0" class="card-historico">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="list-outline"></ion-icon>
+          Orçamentos Salvos ({{orcamentos.length}})
+        </ion-card-title>
+        <ion-card-subtitle>Seus cálculos anteriores</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button expand="block" fill="outline" color="secondary" (click)="verListaCompleta()">
+          <ion-icon name="list" slot="start"></ion-icon>
+          Ver Lista Completa de Orçamentos
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
