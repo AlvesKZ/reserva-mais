@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrcamentoService, Orcamento } from 'src/app/services/orcamento';
+import { Orcamento, OrcamentoService } from 'src/app/services/orcamento';
 
 @Component({
   selector: 'app-orcamento-detalhes',
@@ -32,16 +32,17 @@ export class OrcamentoDetalhesPage implements OnInit {
   }
 
   async confirmar() {
-    const novoOrcamento: Orcamento = {
-      valorDiaria: this.valorDiaria,
-      quantidadeDias: this.quantidadeDias,
-      dataOrçamento: new Date().toLocaleString('pt-BR')
-    };
+  const novoOrcamento: Orcamento = {
+    valorDiaria: this.valorDiaria,
+    quantidadeDias: this.quantidadeDias,
+    dataOrçamento: new Date().toLocaleString('pt-BR')
+  };
 
-    await this.orcamentoService.adicionarOrcamento(novoOrcamento);
+  await this.orcamentoService.adicionarOrcamento(novoOrcamento);
 
-    this.router.navigate(['/confirmacao'], {
-      queryParams: { valorFinal: this.valorTotal }
-    });
-  }
+  this.router.navigate(['/confirmacao'], {
+    queryParams: { valorFinal: this.valorTotal }
+  });
+}
+
 }
