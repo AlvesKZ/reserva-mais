@@ -76,21 +76,5 @@
         Limpar Campos
       </ion-button>
     </div>
-
-    <ion-card *ngIf="orcamentos.length > 0" class="card-historico">
-      <ion-card-header>
-        <ion-card-title>
-          <ion-icon name="list-outline"></ion-icon>
-          Orçamentos Salvos ({{orcamentos.length}})
-        </ion-card-title>
-        <ion-card-subtitle>Seus cálculos anteriores</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-button expand="block" fill="outline" color="secondary" (click)="verListaCompleta()">
-          <ion-icon name="list" slot="start"></ion-icon>
-          Ver Lista Completa de Orçamentos
-        </ion-button>
-      </ion-card-content>
-    </ion-card>
   </div>
 </ion-content>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Orcamento } from 'src/app/services/orcamento';
 
 @Component({
   selector: 'app-orcamento',
@@ -11,10 +10,6 @@ import { Orcamento } from 'src/app/services/orcamento';
 export class OrcamentoPage implements OnInit {
   valorDiaria: number = 0;
   quantidadeDias: number = 1;
-
-  orcamentos: Orcamento[] = [];
-  orcamento: Orcamento = { valorDiaria: 0, quantidadeDias: 0 };
-  indiceEdicao = -1;
 
   constructor(
     private router: Router

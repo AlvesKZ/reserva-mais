@@ -1,13 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>lista-orcamentos</ion-title>
+    <ion-title>Orcçamentos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lista-orcamentos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item *ngFor="let orcamento of orcamentos; let i = index"></ion-item>
+  <ion-label>
+    <p>{{ orcamento.valorDiaria }}</p>
+    <p>{{ orcamento.quantidadeDias }}</p>
+    <p *ngIf="orcamento.dataOrcamento != null">{{ orcamento.dataOrcamento }}</p>
+    <ion-button color="danger" (click)="excluirOrcamento({{i}})">Excluir orçamento</ion-button>
+  </ion-label>
 </ion-content>

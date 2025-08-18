@@ -35,7 +35,7 @@ export class OrcamentoDetalhesPage implements OnInit {
   const novoOrcamento: Orcamento = {
     valorDiaria: this.valorDiaria,
     quantidadeDias: this.quantidadeDias,
-    dataOrçamento: new Date().toLocaleString('pt-BR')
+    dataOrcamento: new Date().toLocaleString('pt-BR')
   };
 
   await this.orcamentoService.adicionarOrcamento(novoOrcamento);

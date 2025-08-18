@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage-angular';
 export interface Orcamento {
   valorDiaria: number;
   quantidadeDias: number;
-  dataOrçamento?: string;
+  dataOrcamento?: string;
 }
 
 @Injectable({
@@ -29,19 +29,11 @@ export class OrcamentoService {
 
   async adicionarOrcamento(orcamento: Orcamento): Promise<void> {
     const orcamentos = await this.obterOrcamentos();
-    if (!orcamento.dataOrçamento) {
-      orcamento.dataOrçamento = new Date().toLocaleString('pt-BR');
+    if (!orcamento.dataOrcamento) {
+      orcamento.dataOrcamento = new Date().toLocaleString('pt-BR');
     }
     orcamentos.push(orcamento);
     await this.storage.set('orcamentos', orcamentos);
-  }
-
-  async atualizarOrcamento(indice: number, orcamento: Orcamento): Promise<void> {
-    const orcamentos = await this.obterOrcamentos();
-    if (indice >= 0 && indice < orcamentos.length) {
-      orcamentos[indice] = orcamento;
-      await this.storage.set('orcamentos', orcamentos);
-    }
   }
 
   async excluirOrcamento(indice: number): Promise<void> {
