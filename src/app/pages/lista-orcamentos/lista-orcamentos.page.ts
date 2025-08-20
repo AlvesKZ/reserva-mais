@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Orcamento, OrcamentoService } from 'src/app/services/orcamento'
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { Orcamento, OrcamentoService } from 'src/app/services/orcamento';
 
 @Component({
   selector: 'app-lista-orcamentos',
@@ -8,10 +10,13 @@ import { Orcamento, OrcamentoService } from 'src/app/services/orcamento'
   standalone: false,
 })
 export class ListaOrcamentosPage implements OnInit {
-  orcamento!: Orcamento;
   orcamentos: Orcamento[] = [];
 
-  constructor(private orcamentoService: OrcamentoService) { }
+  constructor(
+    private orcamentoService: OrcamentoService,
+    private router: Router,
+    private location: Location,
+  ) {}
 
   ngOnInit() {
     this.carregarOrcamentos();
@@ -24,5 +29,9 @@ export class ListaOrcamentosPage implements OnInit {
   async excluirOrcamento(indice: number) {
     await this.orcamentoService.excluirOrcamento(indice);
     this.carregarOrcamentos();
+  }
+
+  voltar() {
+    this.location.back();
   }
 }

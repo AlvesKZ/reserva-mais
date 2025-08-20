@@ -1,0 +1,24 @@
+ion-item {
+  --padding-start: 12px;
+  --inner-padding-end: 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  --background: #f5f7fa;
+}
+
+ion-label h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #103778;
+}
+
+ion-label p {
+  font-size: 0.9em;
+  margin: 2px 0;
+  color: #333;
+}
+
+.container-botoes {
+  margin-top: 24px;
+}

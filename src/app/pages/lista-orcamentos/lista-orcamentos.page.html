@@ -1,15 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Orcçamentos</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-icon name="list-outline" slot="start"></ion-icon>
+      Lista de Orçamentos
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item *ngFor="let orcamento of orcamentos; let i = index"></ion-item>
-  <ion-label>
-    <p>{{ orcamento.valorDiaria }}</p>
-    <p>{{ orcamento.quantidadeDias }}</p>
-    <p *ngIf="orcamento.dataOrcamento != null">{{ orcamento.dataOrcamento }}</p>
-    <ion-button color="danger" (click)="excluirOrcamento({{i}})">Excluir orçamento</ion-button>
-  </ion-label>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-card *ngIf="orcamentos.length === 0">
+    <ion-card-content>
+      Nenhum orçamento salvo até o momento.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="orcamentos.length > 0">
+    <ion-item *ngFor="let orcamento of orcamentos; let i = index">
+      <ion-label>
+        <h2><strong>Total:</strong> R$ {{orcamento.valorDiaria * orcamento.quantidadeDias}}</h2>
+        <p><strong>Valor por dia:</strong> R$ {{orcamento.valorDiaria}}</p>
+        <p><strong>Quantidate de dias:</strong> {{orcamento.quantidadeDias}}</p>
+        <p *ngIf="orcamento.dataOrcamento"><strong>Data:</strong> {{orcamento.dataOrcamento}}</p>
+      </ion-label>
+
+      <ion-button color="danger" fill="outline" size="small" (click)="excluirOrcamento(i)">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Excluir
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div class="container-botoes">
+    <ion-button expand="block" fill="outline" color="medium" (click)="voltar()">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Voltar
+    </ion-button>
+  </div>
+
 </ion-content>

@@ -39,27 +39,6 @@
               <ion-label slot="end">30</ion-label>
             </ion-range>
           </ion-item>
-
-          <ion-item lines="none" class="item-resumo" *ngIf="valorDiaria && valorDiaria > 0">
-            <ion-label>
-              <h3>Preview do orçamento</h3>
-              <div class="detalhes-calculo">
-                <p>
-                  <span class="rotulo-detalhe">Valor por dia:</span>
-                  <span class="valor-detalhe">R$ {{valorDiaria | number:'1.2-2'}}</span>
-                </p>
-                <p>
-                  <span class="rotulo-detalhe">Quantidade de dias:</span>
-                  <span class="valor-detalhe">{{quantidadeDias}} {{quantidadeDias === 1 ? 'dia' : 'dias'}}</span>
-                </p>
-                <hr>
-                <p class="valor-total">
-                  <span class="rotulo-detalhe">Total:</span>
-                  <span class="montante-total">R$ {{obterTotal() | number:'1.2-2'}}</span>
-                </p>
-              </div>
-            </ion-label>
-          </ion-item>
         </form>
       </ion-card-content>
     </ion-card>
